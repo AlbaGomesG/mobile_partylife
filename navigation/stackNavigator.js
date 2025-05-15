@@ -1,14 +1,14 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import logIn from "../pages/logIn";
-import forYou from "../pages/forYou";
+import LogIn from '../pages/LogIn';
+import ForYou from '../pages/ForYou';
 
 const Stack = createNativeStackNavigator();
 
 export default function StackNavigator() {
     return(
         <Stack.Navigator >
-            <Stack.Screen name="logIn" component={logIn} />
-            <Stack.Screen name="Home" component={forYou} />
+            <Stack.Screen name="LogIn" component={LogIn} options={{headerShown: false}} />
+            <Stack.Screen name="Home" component={ForYou} />
         </Stack.Navigator>
     )
 }
