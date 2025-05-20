@@ -3,7 +3,7 @@ import { View, StyleSheet, Image, TouchableOpacity, Text} from "react-native";
 import Input from "../components/Inputs";
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function LogIn (){
+export default function LogIn ({navigation}){
     return (
           <View style={styles.container}>
             <LinearGradient
@@ -30,7 +30,7 @@ export default function LogIn (){
                 onChangeText={null}
                 keyboardType={"password-adress"}
                 />
-                <TouchableOpacity style={styles.button} >
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("ForYou")}>
                     <Text style={styles.buttonText}>Entrar</Text>
                 </TouchableOpacity>
             </View>

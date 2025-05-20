@@ -12,7 +12,3 @@ export default function Button ({buttonTitle, style}){
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-
-})

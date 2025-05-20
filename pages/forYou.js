@@ -1,12 +1,18 @@
 import react from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 export default function ForYou(){
     return(
-        <View>
-            <Text>
-                teste
-            </Text>
+        <View style={styles.container}>
+            
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: "#FFFF",
+        width: "100vw",
+        height: "100vh"
+    }
+})
