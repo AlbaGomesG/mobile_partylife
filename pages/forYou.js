@@ -4,7 +4,9 @@ import { View, Text, StyleSheet } from "react-native";
 export default function ForYou(){
     return(
         <View style={styles.container}>
-            
+            <Text>
+                voce está na Tela For You
+            </Text>  
         </View>
     )
 }

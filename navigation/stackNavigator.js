@@ -1,7 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import LogIn from '../pages/logIn';
-import ForYou from '../pages/forYou';
+import LogIn from '../pages/LogIn';
+import ForYou from '../pages/ForYou';
 
 const Stack = createNativeStackNavigator();
 
@@ -9,6 +9,7 @@ export default function StackNavigator() {
     return(
         <Stack.Navigator initialRouteName="LogIn">
             <Stack.Screen name="LogIn" component={LogIn} options={{headerShown: false}} />
+
             <Stack.Screen name="ForYou" component={ForYou} options={{
                 title: "Home",
                 headerTitleAlign: "center",
@@ -18,6 +19,7 @@ export default function StackNavigator() {
                 },
                 
             }}/>
+
         </Stack.Navigator>
     )
 }
