@@ -7,7 +7,6 @@ export default function Input ({labelTitle, placeholder, value, onChangeText, ke
             <Text style={styles.label}>{labelTitle}</Text>
             <TextInput 
             style={styles.input}
-            placeholder={placeholder}
             value={value}
             onChangeText={onChangeText}
             keyboardType={keyboardType}
@@ -21,19 +20,21 @@ const styles = StyleSheet.create({
     inputContainer: {
         display: "flex",
         flexDirection: "column",
-        width: "60%",
+        width: "70%",
     },
     label: {
-        fontSize: 15,
+        fontSize: 20,
         color: "#fff",
         marginBottom: 5,
     },
     input: {
         width: "100%",
-        height: 25,
+        height: 40,
         backgroundColor: "#fff",
+        color: "#7B2FF2",
         borderRadius: 5,
         paddingLeft: 10,
         marginBottom: 10,
+        outlineStyle: "none",
     },
 })
