@@ -1,11 +1,48 @@
-import react from "react";
+
 import { View, StyleSheet, Image, TouchableOpacity, Text} from "react-native";
-import Input from "../components/Inputs";
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
+import { useState } from "react";
+import Input from "../components/Inputs";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+
+
 
 export default function LogIn (){
+        const [email, setEmail] = useState('');
+        const [password, setPassword] = useState('');
+        const [error, setError] = useState(null);
+        const [success, setSuccess] = useState(null);
+        const navigation = useNavigation();
+
+    const handleLogin = async () => {
+        try {
+            const response = await axios.post ('http://192.168.1.6:3030/api/auth/login', { // quando for rodar o backend localmente coloque o endereço do ip ipv4 (ipconfig no cmd)
+                email,
+                senha: password,
+            })
+            const { token } = response.data;
+        if (!token) {
+        throw new Error('Token não encontrado na resposta');
+    }
+
+    await AsyncStorage.setItem('token', token);
+
+    console.log('Login bem-sucedido:', response.data);
+    setError(null); 
+    setSuccess('Login realizado com sucesso!');
+
+        navigation.navigate('ForYou');
+        } catch (error) {
+            const errorMessage = error.response?.data?.message || 'Erro ao fazer login. Tente novamente.';
+            setError(errorMessage); 
+            setSuccess(null);
+        }
+    }
+
     return (
-          <View style={styles.container}>
+        <View style={styles.container}>
             <LinearGradient
                 colors={[ '#C36CFF', '#E1B5FF',  '#FFFFFF']}
                 start={{ x: 0, y: 0 }}
@@ -19,18 +56,19 @@ export default function LogIn (){
             <View style={styles.inputContainer}>
                 <Input 
                 labelTitle={"E-mail :"}
-                value={undefined}
-                onChangeText={null}
+                value={email}
+                onChangeText={setEmail}
                 keyboardType={"email-adress"}
                 />
                 
                 <Input 
                 labelTitle={"Senha :"}
-                value={undefined}
-                onChangeText={null}
+                value={password}
+                onChangeText={setPassword}
                 keyboardType={"password-adress"}
                 />
-                <TouchableOpacity style={styles.button} >
+                    {error && <Text style={styles.error}>{error}</Text>}
+                <TouchableOpacity style={styles.button} onPress={handleLogin} >
                     <Text style={styles.buttonText}>Entrar</Text>
                 </TouchableOpacity>
             </View>

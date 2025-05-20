@@ -5,7 +5,7 @@ export default function ForYou(){
     return(
         <View>
             <Text>
-                teste
+                voce está na Tela For You
             </Text>
         </View>
     )
