@@ -1,12 +1,20 @@
 import react from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 export default function ForYou(){
     return(
-        <View>
+        <View style={styles.container}>
             <Text>
                 voce está na Tela For You
-            </Text>
+            </Text>  
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: "#FFFF",
+        width: "100vw",
+        height: "100vh"
+    }
+})

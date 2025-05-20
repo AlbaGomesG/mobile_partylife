@@ -1,3 +1,4 @@
+import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LogIn from '../pages/LogIn';
 import ForYou from '../pages/ForYou';
@@ -6,9 +7,19 @@ const Stack = createNativeStackNavigator();
 
 export default function StackNavigator() {
     return(
-        <Stack.Navigator >
+        <Stack.Navigator initialRouteName="LogIn">
             <Stack.Screen name="LogIn" component={LogIn} options={{headerShown: false}} />
-            <Stack.Screen name="ForYou" component={ForYou} />
+
+            <Stack.Screen name="ForYou" component={ForYou} options={{
+                title: "Home",
+                headerTitleAlign: "center",
+                headerTintColor: "#FFFF",
+                headerStyle:{
+                    backgroundColor: "#C36CFF",
+                },
+                
+            }}/>
+
         </Stack.Navigator>
     )
 }

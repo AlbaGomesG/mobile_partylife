@@ -8,7 +8,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
 
-
 export default function LogIn (){
         const [email, setEmail] = useState('');
         const [password, setPassword] = useState('');
@@ -41,6 +40,8 @@ export default function LogIn (){
         }
     }
 
+
+export default function LogIn (){
     return (
         <View style={styles.container}>
             <LinearGradient
@@ -67,8 +68,9 @@ export default function LogIn (){
                 onChangeText={setPassword}
                 keyboardType={"password-adress"}
                 />
+
                     {error && <Text style={styles.error}>{error}</Text>}
-                <TouchableOpacity style={styles.button} onPress={handleLogin} >
+                <TouchableOpacity style={styles.button} onPress={handleLogin} 
                     <Text style={styles.buttonText}>Entrar</Text>
                 </TouchableOpacity>
             </View>
