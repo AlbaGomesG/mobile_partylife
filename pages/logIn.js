@@ -1,5 +1,5 @@
 
-import { View, StyleSheet, Image, TouchableOpacity, Text} from "react-native";
+import { View, StyleSheet, Image, TouchableOpacity, Text, Button} from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from "react";
@@ -29,6 +29,7 @@ export default function LogIn (){
     await AsyncStorage.setItem('token', token);
 
     console.log('Login bem-sucedido:', response.data);
+    console.log('Token:', token);
     setError(null); 
     setSuccess('Login realizado com sucesso!');
 
@@ -71,6 +72,7 @@ export default function LogIn (){
                 <TouchableOpacity style={styles.button} onPress={handleLogin}>
                     <Text style={styles.buttonText}>Entrar</Text>
                 </TouchableOpacity>
+                {/* <Button onPress={() => navigation.navigate('ForYou')} title="Entrar" /> */} {/* apenas descomente para ajustes no código para não precisar fazer login */}
                 </View>
         </View>
     )
