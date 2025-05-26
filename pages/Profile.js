@@ -107,7 +107,6 @@ const handleLogout = async () => {
                     style={styles.postImage}
                     resizeMode="cover"
                 />
-                <Text style={styles.postTitle}>{item.title}</Text>
                 <Text style={styles.postContent}>{item.content}</Text>
                 </View>
             ))
