@@ -40,7 +40,7 @@ const getUserData = async () => {
         const payload = parseJwt(token);
         if (!payload?.id) return console.error('ID do usuário não encontrado no token');
 
-        const response = await axios.get(`http://192.168.1.6:3030/api/users/${payload.id}`, {
+        const response = await axios.get(`http://10.88.199.149:3030/api/users/${payload.id}`, {
         headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -59,7 +59,7 @@ const getUserPosts = async () => {
         const payload = parseJwt(token);
         if (!payload?.id) return console.error('ID do usuário não encontrado no token');
 
-        const response = await axios.get(`http://192.168.1.6:3030/api/posts/${payload.id}`, {
+        const response = await axios.get(`http://10.88.199.149:3030/api/posts/${payload.id}`, {
             headers: { Authorization: `Bearer ${token}` }
         });
         console.log(response.data);
@@ -101,7 +101,7 @@ const handleLogout = async () => {
                     item.image_post
                         ? item.image_post.startsWith('http')
                         ? { uri: item.image_post }
-                        : { uri: `http://192.168.1.6:3030/uploads/${item.image_post}` }
+                        : { uri: `http://10.88.199.149:3030/uploads/${item.image_post}` }
                         : require('../assets/150.svg')
                     }
                     style={styles.postImage}

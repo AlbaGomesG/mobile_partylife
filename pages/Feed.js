@@ -12,9 +12,9 @@ export default function Feed() {
 
     const getAllPosts = async () => {
         try {
-            const response = await axios.get('http://192.168.1.6:3030/api/posts')
+            const response = await axios.get('http://10.88.199.149:3030/api/posts')
             setPosts(response.data);
-            console.log("Posts retornados com sucesso:", response.data);
+            //console.log("Posts retornados com sucesso:", response.data);
         } catch (error) {
             console.error("Error ao retornar os posts:", error);
             
@@ -32,11 +32,6 @@ export default function Feed() {
         <ScrollView style={styles.main} contentContainerStyle={styles.scrollContent}>
         <View>
             <View>
-                <TouchableOpacity onPress={handleProfile} style={styles.button}> {/*será mais tarde será substituido por bottomTab */}
-                    <Text>Ir para profile</Text>
-                </TouchableOpacity>
-            </View>
-            <View>
                 {posts.map((post, index) => (
                     <View key={index} style={styles.postContainer}>
                         <Text>{post.user_id}</Text> {/* será substituido pelo user_name */}
@@ -45,7 +40,7 @@ export default function Feed() {
                         post.image_post
                             ? post.image_post.startsWith('http')
                             ? { uri: post.image_post }
-                            : { uri: `http://192.168.1.6:3030/uploads/${post.image_post}` }
+                            : { uri: `http://10.88.199.149:3030/uploads/${post.image_post}` }
                             : require('../assets/150.svg')
                         }
                         style={styles.postImage} 
@@ -116,6 +111,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#000',
         flex: 1,
-        marginRight: '2rem',
+        marginRight: 32,
+        
     },
 });
