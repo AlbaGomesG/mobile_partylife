@@ -4,15 +4,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function Feed() {
-
-    const navigation = useNavigation();
     const [posts, setPosts] = useState([]);
-
-
 
     const getAllPosts = async () => {
         try {
-            const response = await axios.get('http://10.88.199.149:3030/api/posts')
+            const response = await axios.get(`${process.env.EXPO_PUBLIC_API_URL}/api/posts`)
             setPosts(response.data);
             //console.log("Posts retornados com sucesso:", response.data);
         } catch (error) {
@@ -23,11 +19,6 @@ export default function Feed() {
         useEffect(() => {
         getAllPosts();
     }, []);
-
-    const handleProfile = async () => {
-        navigation.navigate('Profile');
-    }
-
     return (
         <ScrollView style={styles.main} contentContainerStyle={styles.scrollContent}>
         <View>
@@ -40,7 +31,7 @@ export default function Feed() {
                         post.image_post
                             ? post.image_post.startsWith('http')
                             ? { uri: post.image_post }
-                            : { uri: `http://10.88.199.149:3030/uploads/${post.image_post}` }
+                            : { uri: `${process.env.EXPO_PUBLIC_API_URL}/uploads/${post.image_post}` }
                             : require('../assets/150.svg')
                         }
                         style={styles.postImage} 

@@ -15,7 +15,7 @@ export default function LogIn() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://10.88.199.149:3030/api/auth/login', {
+      const response = await axios.post(`${process.env.EXPO_PUBLIC_API_URL}/api/auth/login`, {
         email,
         senha: password,
       });
