@@ -21,7 +21,6 @@ export default function Feed({navigation}) {
         try {
             const response = await axios.get(`${process.env.EXPO_PUBLIC_API_URL}/api/posts`)
             setPosts(response.data);
-            //console.log("Posts retornados com sucesso:", response.data);
         } catch (error) {
             console.error("Error ao retornar os posts:", error);
         }
@@ -42,7 +41,7 @@ export default function Feed({navigation}) {
         <ScrollView style={styles.main} contentContainerStyle={styles.scrollContent}>
         <View>
             <View>
-                {posts.map((post, index) => (
+                {posts.map((post, index, event) => (
                     <View key={index} style={styles.postContainer}>
                         <Text>{getUsernameById(post.user_id)}</Text> 
                         <Image 
@@ -58,7 +57,7 @@ export default function Feed({navigation}) {
                         />
                         <View style={styles.detailContainer}>
                             <Text style={styles.TextContent}>{post.content}</Text>
-                            <TouchableOpacity style={styles.buttonDetails} onPress={() => navigation.navigate('PostDetails', { postId: post.id })}> 
+                            <TouchableOpacity style={styles.buttonDetails} onPress={() => navigation.navigate('PostDetails', { postId: event.id == post.event_id ? post.id : null })}> 
                                 <Text style={{ color: '#fff'}}>Ver detalhes</Text>
                             </TouchableOpacity>
                         </View>
