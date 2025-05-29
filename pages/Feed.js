@@ -1,10 +1,21 @@
+"use client";
+
 import { View, TouchableOpacity, Text, StyleSheet, Image, ScrollView} from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-export default function Feed() {
+export default function Feed({navigation}) {
     const [posts, setPosts] = useState([]);
+    const [users, setUsers] = useState([]);
+
+    getAllUsers = async () => {
+        try {
+            const response = await axios.get(`${process.env.EXPO_PUBLIC_API_URL}/api/users`)
+            setUsers(response.data);
+        } catch (error) {
+            console.error("Error ao retornar os usuários:", error);
+        }
+    }
 
     const getAllPosts = async () => {
         try {
@@ -13,19 +24,27 @@ export default function Feed() {
             //console.log("Posts retornados com sucesso:", response.data);
         } catch (error) {
             console.error("Error ao retornar os posts:", error);
-            
         }
     }
+
         useEffect(() => {
         getAllPosts();
+        getAllUsers();
     }, []);
+
+    const getUsernameById = (userId) => {
+        const user = users.find(user => user.id === userId);
+        return user ? user.username : "usuário desconhecido";
+    }
+
+
     return (
         <ScrollView style={styles.main} contentContainerStyle={styles.scrollContent}>
         <View>
             <View>
                 {posts.map((post, index) => (
                     <View key={index} style={styles.postContainer}>
-                        <Text>{post.user_id}</Text> {/* será substituido pelo user_name */}
+                        <Text>{getUsernameById(post.user_id)}</Text> 
                         <Image 
                         source={
                         post.image_post
@@ -39,7 +58,7 @@ export default function Feed() {
                         />
                         <View style={styles.detailContainer}>
                             <Text style={styles.TextContent}>{post.content}</Text>
-                            <TouchableOpacity style={styles.buttonDetails}> {/*onPress={() => navigation.navigate('PostDetails', { postId: post.id })} */} {/* navegação para a página de detalhe do post*/}
+                            <TouchableOpacity style={styles.buttonDetails} onPress={() => navigation.navigate('PostDetails', { postId: post.id })}> 
                                 <Text style={{ color: '#fff'}}>Ver detalhes</Text>
                             </TouchableOpacity>
                         </View>
