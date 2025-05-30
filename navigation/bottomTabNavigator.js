@@ -4,6 +4,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 import Feed from "../pages/Feed";
 import Profile from "../pages/Profile";
+import PostDetails from "../pages/postDetails";
 
 const Tab = createBottomTabNavigator();
 export default function BottomTabNavigator() {
@@ -48,6 +49,16 @@ export default function BottomTabNavigator() {
                 }} 
             />
             <Tab.Screen 
+                name="PostDetails" 
+                component={PostDetails} 
+                options={{ 
+                    tabBarLabel: "Detalhes",
+                    tabBarIcon: ({ color, size }) => (
+                        <Ionicons name="information-circle-outline" size={size} color={color} />
+                    ),
+                }}
+            />
+            <Tab.Screen 
                 name="Profile" 
                 component={Profile} 
                 options={{ 
@@ -57,6 +68,7 @@ export default function BottomTabNavigator() {
                     ),
                 }} 
             />
+
         </Tab.Navigator>
     );
 }
