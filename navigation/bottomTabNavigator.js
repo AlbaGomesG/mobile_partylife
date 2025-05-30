@@ -49,16 +49,6 @@ export default function BottomTabNavigator() {
                 }} 
             />
             <Tab.Screen 
-                name="PostDetails" 
-                component={PostDetails} 
-                options={{ 
-                    tabBarLabel: "Detalhes",
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="information-circle-outline" size={size} color={color} />
-                    ),
-                }}
-            />
-            <Tab.Screen 
                 name="Profile" 
                 component={Profile} 
                 options={{ 

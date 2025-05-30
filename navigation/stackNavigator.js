@@ -13,7 +13,7 @@ export default function StackNavigator() {
         <Stack.Navigator initialRouteName="LogIn">
             <Stack.Screen name="LogIn" component={LogIn} options={{headerShown: false}} />
             <Stack.Screen name="Feed" component={BottomTabNavigator} options={{headerShown: false}} />
-            <Stack.Screen name="PostDetails" component={PostDetails} options={{headerShown: false}} />
+            <Stack.Screen name="PostDetails" component={PostDetails} options={{/*{headerShown: false}*/}} />
         </Stack.Navigator>
     )
 }
