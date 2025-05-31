@@ -2,7 +2,7 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTabNavigator from "./bottomTabNavigator";
 import LogIn from '../pages/logIn';
-import Profile from '../pages/Profile';
+
 import Feed from "../pages/Feed";
 import PostDetails from "../pages/postDetails";
 
