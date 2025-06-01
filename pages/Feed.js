@@ -1,6 +1,5 @@
-"use client";
 
-import { View, TouchableOpacity, Text, StyleSheet, Image, ScrollView} from "react-native";
+import { View, Text, StyleSheet, Image, ScrollView} from "react-native";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -57,9 +56,6 @@ export default function Feed({navigation}) {
                         />
                         <View style={styles.detailContainer}>
                             <Text style={styles.TextContent}>{post.content}</Text>
-                            <TouchableOpacity style={styles.buttonDetails} onPress={() => navigation.navigate('PostDetails', { postId: event.id == post.event_id ? post.id : null })}> 
-                                <Text style={{ color: '#fff'}}>Ver detalhes</Text>
-                            </TouchableOpacity>
                         </View>
                     </View>
                 ))}
@@ -76,13 +72,6 @@ const styles = StyleSheet.create({
     scrollContent: {
         padding: 20,
         paddingBottom: 40,
-    },
-    button: {
-        backgroundColor: '#C36CFF',
-        padding: 10,
-        borderRadius: 5,
-        alignItems: 'center',
-        marginTop: 20,
     },
     postImage: {
         width: '100%',
@@ -102,13 +91,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 4,
         elevation: 2,
-    },
-    buttonDetails: {
-        backgroundColor: '#8077FF',
-        padding: 10,
-        borderRadius: 25,
-        alignItems: 'center',
-        marginTop: 10,
     },
     detailContainer: {
         display: 'flex',

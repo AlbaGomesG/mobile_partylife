@@ -44,9 +44,6 @@ export default function Events() {
                 </View>
                 </TouchableOpacity>
             ))}
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Eventos</Text>
-        </View>
         </ScrollView>
     );
 }
