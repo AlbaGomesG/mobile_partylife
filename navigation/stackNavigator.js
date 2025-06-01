@@ -4,7 +4,7 @@ import BottomTabNavigator from "./bottomTabNavigator";
 import LogIn from '../pages/logIn';
 
 import Feed from "../pages/Feed";
-import PostDetails from "../pages/postDetails";
+import EventDetails from "../pages/EventsDetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +13,7 @@ export default function StackNavigator() {
         <Stack.Navigator initialRouteName="LogIn">
             <Stack.Screen name="LogIn" component={LogIn} options={{headerShown: false}} />
             <Stack.Screen name="Feed" component={BottomTabNavigator} options={{headerShown: false}} />
-            <Stack.Screen name="PostDetails" component={PostDetails} options={{/*{headerShown: false}*/}} />
+            <Stack.Screen name="EventDetails" component={EventDetails} options={{/*{headerShown: false}*/}} />
         </Stack.Navigator>
     )
 }
