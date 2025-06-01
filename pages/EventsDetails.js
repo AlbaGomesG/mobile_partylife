@@ -17,7 +17,6 @@ export default function PostDetails() {
                     throw new Error('Nenhum dado encontrado para o ID fornecido');
                 }
                 setEventDetails(response.data);
-                console.log("Detalhes do Evento:", response.data);
             } catch (error) {
                 console.error("Erro ao buscar dados:", error);
             }

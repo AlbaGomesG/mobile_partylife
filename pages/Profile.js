@@ -62,7 +62,6 @@ const getUserPosts = async () => {
         const response = await axios.get(`${process.env.EXPO_PUBLIC_API_URL}/api/posts/${payload.id}`, {
             headers: { Authorization: `Bearer ${token}` }
         });
-        console.log(response.data);
 
         setPosts(response.data);
     } catch (error) {

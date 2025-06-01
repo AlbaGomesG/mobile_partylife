@@ -11,7 +11,6 @@ export default function Events() {
             try {
                 const response = await axios.get(`${process.env.EXPO_PUBLIC_API_URL}/api/events`);
                 setEvents(response.data);
-                console.log("Eventos:", response.data);
             } catch (error) {
                 console.error("Error fetching events:", error);
             }
