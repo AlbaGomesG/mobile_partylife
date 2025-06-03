@@ -25,18 +25,18 @@ export default function Events() {
         navigation.navigate('EventDetails', {id});
     }
     return (
-
             <ScrollView style={styles.main} contentContainerStyle={styles.scrollContent}>
-            
             {events.map((event) => (
                 <TouchableOpacity key={event.id} onPress={() => navigateToEventDetails(event.id)} style={styles.mainContainer}>
-                    <LinearGradient
+                        <LinearGradient
                         style={styles.backgroundColor}
                         colors={['#C36CFF', '#E1B5FF', '#FFFFFF']}
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 0, y: 1 }}
+                        start={{ x: 0, y: 2 }}
+                        end={{ x: 2, y: 0 }}
                     >
-                    <Text style={styles.eventTitle}>{event.title}</Text>
+                        <Text style={styles.eventTitle}>{event.title}</Text>
+                    </LinearGradient>
+                    <View style={styles.eventImageCase}>
                     <Image 
                         source={
                             event.image_event
@@ -48,33 +48,41 @@ export default function Events() {
                         style={styles.eventImage}
                         resizeMode="cover"
                     />
-                    </LinearGradient>
+                    </View>
                 </TouchableOpacity>
             ))}
-        </ScrollView>
+            </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
-    main: {
-        flex: 1,
+    mainContainer: {
         backgroundColor: '#fff',
+        borderRadius: 10,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '90%',
+        color: '#333',
     },
 
     backgroundColor: {
-        display: 'flex',
-        flexDirection: 'column',
         width: '100%',
-        height: '100%',
-        marginBottom: 20,
-        borderRadius: 10,
-        overflow: 'hidden',
-        alignItems: 'center',
-        justifyContent: 'center',
+        padding: 10,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
     },
 
     scrollContent: {
         padding: 16,
+        width: '100vw',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 16,
+        backgroundColor: '#ffff',
     },
 
     eventTitle: {
@@ -83,12 +91,20 @@ const styles = StyleSheet.create({
         marginBottom: 8,
         textAlign: 'center',
         color: 'white',
-    },
 
+    },
+    eventImageCase: {
+        width: '100%',
+        height: 200,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
+        borderWidth: 1,
+    },
     eventImage: {
         width: '100%',
         height: 200,
-        borderRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
     },
 
     eventDescription: {

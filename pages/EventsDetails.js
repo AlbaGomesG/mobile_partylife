@@ -30,10 +30,10 @@ export default function PostDetails() {
                 <View style={styles.postImageContainer}>
                     <Image 
                         source={
-                            EventDetails.image_event
-                                ? EventDetails.image_event.startsWith('http')
-                                    ? { uri: EventDetails.image_event }
-                                    : { uri: `${process.env.EXPO_PUBLIC_API_URL}/uploads/${EventDetails.image_event}` }
+                            EventDetails.event_photo
+                                ? EventDetails.event_photo.startsWith('http')
+                                    ? { uri: EventDetails.event_photo }
+                                    : { uri: `${process.env.EXPO_PUBLIC_API_URL}/uploads/${EventDetails.event_photo}` }
                                 : require('../assets/150.svg')
                         }
                         style={styles.postImage}
@@ -49,27 +49,65 @@ export default function PostDetails() {
                 </View>
                 <View style={styles.postContainer}>
                     <View style={{ width: '70%'}}>
-                    <Text style={styles.textRegras}>Regras</Text>
+                    <Text style={styles.textRegras}>REGRAS</Text>
                     <Text style={styles.partyDescription}>{EventDetails.events_rules}</Text>
                     </View>
                 </View>
                 <View style={styles.postContainerPink}>
                     <View style={{ width: '70%'}}>
-                    <Text style={styles.partyItens}>O que terá na festa?</Text>
+                    <Text style={styles.partyItens}>O QUE TERÁ NA FESTA?</Text>
                     <Text style={styles.partyDescription}>{EventDetails.party_itens}</Text>
                     </View>
                 </View>
                 <View style={styles.postContainer}>
                     <View style={{ width: '70%'}}>
-                    <Text style={styles.partyItens}>O que levar para a festa?</Text>
+                    <Text style={styles.partyItens}>O QUE LEVAR PARA A FESTA ?</Text>
                     <Text style={styles.partyDescription}>{EventDetails.take_products}</Text>
                     </View>
                     </View>
                 </View>
+                <View style={styles.postContainerPink}>
+                    <View style={{ width: '70%'}}>
+                        <Text style={styles.partyItens}>ATRAÇÕES</Text>
+                    </View>
+                    <View style={styles.attractionImgContainer}>
+                        <Image 
+                        source={
+                            EventDetails.attractions 
+                            ? EventDetails.attractions.startsWith('http')
+                                ? { uri: EventDetails.attractions }
+                                : { uri: `${process.env.EXPO_PUBLIC_API_URL}/uploads/${EventDetails.attractions}` }
+                            : require('../assets/150.svg')
+                        }
+                        style={styles.attractionImg}
+                        resizeMode="cover"
+                        />
+                    </View>
+                    <Text style={styles.partyDescription}>{EventDetails.attractions_name}</Text>
+                </View>
+                <View style={styles.postContainer}>
+                    <View style={{ width: '70%'}}>
+                        <Text style={styles.partyItens}>ESTILO DA FESTA</Text>
+                    </View>
+                    <View style={styles.styleImgContainer}>
+                        <Image
+                            source={
+                                EventDetails.styles
+                                    ? EventDetails.styles.startsWith('http')
+                                        ? { uri: EventDetails.styles }
+                                        : { uri: `${process.env.EXPO_PUBLIC_API_URL}/uploads/${EventDetails.styles}` }
+                                    : require('../assets/150.svg')
+                            }
+                            style={styles.styleImg}
+                            resizeMode="cover" 
+                        />
+                    </View>
+                    <Text style={styles.partyDescription}>{EventDetails.styles_name}</Text>
+                </View>
                 <View style={styles.postContainerHashtags}>
                     <View style={{ width: '70%'}}>
-                    <Text style={styles.partyHashtags}>Hashtags oficiais</Text>
-                    <Text style={styles.partyDescription}>{EventDetails.hashtags}</Text>
+                    <Text style={styles.partyHashtags}>HASHTAGS OFICIAIS</Text>
+                    <Text style={styles.partyDescriptionHash}>{EventDetails.hashtags}</Text>
                     </View>
                 </View>
         </ScrollView>
@@ -96,7 +134,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        height: 270,
+        height: 300,
         backgroundColor: '#E1B5FF',
     },
     postContainer: {
@@ -125,21 +163,28 @@ const styles = StyleSheet.create({
         color: 'black',
         marginBottom: 20,
         marginTop: 10,
-        textAlign: 'justify',
-        width: '90%',
+        textAlign: 'left',
         fontWeight: 'bold',
+    },
+    partyDescriptionHash: {
+        fontSize: 15,
+        marginBottom: 20,
+        marginTop: 10,
+        textAlign: 'left',
+        fontWeight: 'bold',
+        color: 'white'
     },
     textRegras: {
         fontSize: 20,
         fontWeight: 'bold',
-        width: '90%',
+        textAlign: 'center',
         color: '#C80000',
     },
     partyItens: {
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 10,
-        width: '90%',
+        textAlign: 'center',
         color: '#006221',
     },
     postContainerHashtags: {
@@ -150,13 +195,28 @@ const styles = StyleSheet.create({
         height: 200,
         justifyContent: 'center',
         backgroundColor: '#E1B5FF',
+        textAlign: 'center',
     },
     partyHashtags: {
+        textAlign: 'center',
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 10,
         marginTop: 20,
-        width: '90%',
         color: '#000000',
     },
+    attractionImgContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        height: 200,
+    },
+    styleImgContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        width: '100%',
+        height: 200,
+        justifyContent: 'center',
+    }
 });
