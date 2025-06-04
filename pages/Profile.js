@@ -123,7 +123,7 @@ export default function Profile() {
         <View>
           <Text style={styles.Name}>Olá, {name}</Text>
           <Text style={styles.userName}>@{name}</Text>
-          <Text style={{ color: "#888", fontStyle: "italic", marginTop: 4 }}>{bio}</Text>
+          <Text style={styles.bio}>{bio}</Text>
         </View>
       </View>
       <View style={styles.postsContainer}>
@@ -365,4 +365,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
   },
+  bio: {
+    color: "#888",
+    fontStyle: "italic",
+    marginTop: 4 
+  }
 });
