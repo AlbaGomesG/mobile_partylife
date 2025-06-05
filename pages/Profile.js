@@ -25,6 +25,8 @@ export default function Profile() {
   const [name, setName] = useState('');
   const [bio, setBio] = useState('');
   const [posts, setPosts] = useState([]);
+  const [perfil_photo, setPerfilPhoto] = useState('');
+  const [username, setUsername] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [editName, setEditName] = useState('');
   const [editBio, setEditBio] = useState('');
@@ -43,7 +45,7 @@ export default function Profile() {
       const payload = parseJwt(token);
       if (!payload?.id) return console.error('ID do usuário não encontrado no token');
 
-      const response = await axios.get(`${process.env.EXPO_PUBLIC_API_URL}/api/users_info/${payload.id}`, {
+      const response = await axios.get(`${process.env.EXPO_PUBLIC_API_URL}/api/users/${payload.id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -52,6 +54,8 @@ export default function Profile() {
       const user = Array.isArray(response.data) ? response.data[0] : response.data;
       setName(user?.name || '');
       setBio(user?.bio || '');
+      setPerfilPhoto(user?.perfil_photo || '');
+      setUsername(user?.username || '');
     } catch (error) {
       console.error('Erro ao buscar dados do usuário:', error);
     }
@@ -122,7 +126,7 @@ export default function Profile() {
         <Image source={require("../assets/150.svg")} style={styles.img} />
         <View>
           <Text style={styles.Name}>Olá, {name}</Text>
-          <Text style={styles.userName}>@{name}</Text>
+          <Text style={styles.userName}>@{username}</Text>
           <Text style={styles.bio}>{bio}</Text>
         </View>
       </View>
@@ -177,11 +181,11 @@ export default function Profile() {
                   multiline
                 />
                 <View style={styles.modalButtons}>
-                  <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
-                    <Text style={styles.saveButtonText}>Salvar</Text>
-                  </TouchableOpacity>
                   <TouchableOpacity style={styles.cancelButton} onPress={closeModal}>
                     <Text style={styles.cancelButtonText}>Cancelar</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
+                    <Text style={styles.saveButtonText}>Salvar</Text>
                   </TouchableOpacity>
                 </View>
               </View>
