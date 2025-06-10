@@ -5,7 +5,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import BottomTabNavigator from "./bottomTabNavigator";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import LogIn from '../pages/logIn';
-import Feed from "../pages/Feed";
 import EventDetails from "../pages/EventsDetails";
 import Loading from "../pages/Loading";
 

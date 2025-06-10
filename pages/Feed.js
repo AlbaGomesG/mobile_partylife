@@ -38,6 +38,13 @@ export default function Feed({navigation}) {
 
     return (
         <ScrollView style={styles.main} contentContainerStyle={styles.scrollContent}>
+            <View style={styles.banner}>
+                <Image 
+                    source={require('../assets/festa.jpg')} 
+                    style={styles.bannerImage}
+                />
+                <Text style={styles.bannerDescription}>Feed</Text>
+            </View>
         <View>
             <View>
                 {posts.map((post, index, event) => (
@@ -72,6 +79,34 @@ const styles = StyleSheet.create({
     scrollContent: {
         padding: 20,
         paddingBottom: 40,
+    },
+    banner: {
+        marginTop: 10,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        width: '100%',
+        maxHeight: 200,
+    },
+    bannerImage: {
+        width: '100%',
+        height: 200,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+    },
+    bannerDescription: {
+        color: 'white',
+        fontSize: 30,
+        textShadowColor: '#000',
+        textShadowOffset: { width: 3, height: 3 },
+        textShadowRadius: 5,
+        fontWeight: 'bold',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        textAlign: 'center',
+        textAlignVertical: 'center',
     },
     postImage: {
         width: '100%',

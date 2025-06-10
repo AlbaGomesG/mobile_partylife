@@ -26,6 +26,13 @@ export default function Events() {
     }
     return (
             <ScrollView style={styles.main} contentContainerStyle={styles.scrollContent}>
+                <View style={styles.banner}>
+                    <Image 
+                        source={require('../assets/festa2.jpg')} 
+                        style={styles.bannerImage}
+                    />
+                    <Text style={styles.bannerDescription}>Eventos</Text>
+                </View>
             {events.map((event) => (
                 <TouchableOpacity key={event.id} onPress={() => navigateToEventDetails(event.id)} style={styles.mainContainer}>
                         <LinearGradient
@@ -39,10 +46,10 @@ export default function Events() {
                     <View style={styles.eventImageCase}>
                     <Image 
                         source={
-                            event.image_event
-                                ? event.image_event.startsWith('http')
-                                    ? { uri: event.image_event }
-                                    : { uri: `${process.env.EXPO_PUBLIC_API_URL}/uploads/${event.event_photo}` }
+                            event.photo
+                                ? event.photo.startsWith('http')
+                                    ? { uri: event.photo }
+                                    : { uri: `${process.env.EXPO_PUBLIC_API_URL}/uploads/${event.photo}` }
                                 : require('../assets/150.svg')
                         }
                         style={styles.eventImage}
@@ -56,6 +63,40 @@ export default function Events() {
 }
 
 const styles = StyleSheet.create({
+    main: {
+        flex: 1,
+        backgroundColor: '#FFFFFF',
+
+    },
+    banner: {
+        marginTop: 30,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        width: '90%',
+        maxHeight: 200,
+    },
+    bannerImage: {
+        width: '100%',
+        height: 200,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        position: 'static',
+    },
+    bannerDescription: {
+        color: 'white',
+        fontSize: 30,
+        textShadowColor: '#000',
+        textShadowOffset: { width: 3, height: 3 },
+        textShadowRadius: 5,
+        fontWeight: 'bold',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+    },
     mainContainer: {
         backgroundColor: '#fff',
         borderRadius: 10,
@@ -69,14 +110,11 @@ const styles = StyleSheet.create({
 
     backgroundColor: {
         width: '100%',
-        padding: 10,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
     },
 
     scrollContent: {
-        padding: 16,
-        width: '100vw',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',

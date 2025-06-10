@@ -52,7 +52,7 @@ export default function BottomTabNavigator() {
                 name="Events" 
                 component={Events} 
                 options={{ 
-                    tabBarLabel: "Eventos",
+                    headerShown: false,
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons name="calendar-outline" size={size} color={color} />
                     ),

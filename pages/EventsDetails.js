@@ -30,10 +30,10 @@ export default function PostDetails() {
                 <View style={styles.postImageContainer}>
                     <Image 
                         source={
-                            EventDetails.event_photo
-                                ? EventDetails.event_photo.startsWith('http')
-                                    ? { uri: EventDetails.event_photo }
-                                    : { uri: `${process.env.EXPO_PUBLIC_API_URL}/uploads/${EventDetails.event_photo}` }
+                            EventDetails.photo
+                                ? EventDetails.photo.startsWith('http')
+                                    ? { uri: EventDetails.photo }
+                                    : { uri: `${process.env.EXPO_PUBLIC_API_URL}/uploads/${EventDetails.photo}` }
                                 : require('../assets/150.svg')
                         }
                         style={styles.postImage}

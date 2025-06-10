@@ -123,7 +123,13 @@ export default function Profile() {
         </TouchableOpacity>
       </View>
       <View style={styles.profileContainer}>
-        <Image source={require("../assets/150.svg")} style={styles.img} />
+        <Image source={
+          perfil_photo
+            ? perfil_photo.startsWith('http')
+              ? { uri: perfil_photo }
+              : { uri: `${process.env.EXPO_PUBLIC_API_URL}/uploads/${perfil_photo}` }
+            : require('../assets/150.svg')
+        } style={styles.img} />
         <View>
           <Text style={styles.Name}>Olá, {name}</Text>
           <Text style={styles.userName}>@{username}</Text>
