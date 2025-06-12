@@ -212,6 +212,12 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 200,
     },
+    attractionImg: {
+        width: '75%',
+        height: '75%',
+        borderRadius: 10,
+
+    },
     styleImgContainer: {
         display: 'flex',
         alignItems: 'center',
